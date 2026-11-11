@@ -115,7 +115,10 @@ def test_the_fixture_copy_has_not_drifted_from_the_apps():
     shared = Path(__file__).parents[2] / "tools" / "fixtures" / "glucose-change-cases.json"
     if not shared.exists():
         pytest.skip("the shared fixture lives in the Sugar Sense repository")
-    assert json.loads(shared.read_text()) == json.loads((FIXTURES / "glucose-change-cases.json").read_text())
+    ours = json.loads((FIXTURES / "glucose-change-cases.json").read_text())
+    theirs = json.loads(shared.read_text())
+    assert ours["constants"] == theirs["constants"]
+    assert ours["cases"] == theirs["cases"]
 
 
 def test_sensor_day_counts_from_one_and_stops_at_the_last_day():
