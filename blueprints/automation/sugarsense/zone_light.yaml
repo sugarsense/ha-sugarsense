@@ -1,0 +1,100 @@
+blueprint:
+  name: "Sugar Sense: light color follows my glucose zone"
+  description: >-
+    Sets a light to a color for the zone your glucose is in: red when low,
+    green in range, amber when high. When there is no current reading the
+    light is left alone or switched off, your choice.
+
+
+    This is a display, never an alert. Alerts stay on your phone.
+  domain: automation
+  author: Sugar Sense
+  source_url: https://github.com/sugarsense/ha-sugarsense/blob/main/blueprints/automation/sugarsense/zone_light.yaml
+  input:
+    zone_sensor:
+      name: Zone sensor
+      description: The Zone sensor of your Sugar Sense device.
+      selector:
+        entity:
+          filter:
+            - integration: sugarsense
+              domain: sensor
+    light_target:
+      name: Light
+      selector:
+        target:
+          entity:
+            - domain: light
+    brightness:
+      name: Brightness
+      default: 40
+      selector:
+        number:
+          min: 1
+          max: 100
+          unit_of_measurement: "%"
+    color_low:
+      name: Color when low or very low
+      default: [229, 72, 77]
+      selector:
+        color_rgb:
+    color_in_range:
+      name: Color in range
+      default: [98, 181, 67]
+      selector:
+        color_rgb:
+    color_high:
+      name: Color when high or very high
+      default: [253, 141, 56]
+      selector:
+        color_rgb:
+    no_reading:
+      name: When there is no current reading
+      description: After 15 minutes without a reading the zone is unavailable.
+      default: leave
+      selector:
+        select:
+          options:
+            - label: Leave the light as it is
+              value: leave
+            - label: Switch the light off
+              value: "off"
+
+mode: restart
+
+trigger:
+  - platform: state
+    entity_id: !input zone_sensor
+
+variables:
+  zone_sensor: !input zone_sensor
+  no_reading: !input no_reading
+  zone: "{{ states(zone_sensor) }}"
+
+action:
+  - choose:
+      - conditions: "{{ zone in ['very_low', 'low'] }}"
+        sequence:
+          - service: light.turn_on
+            target: !input light_target
+            data:
+              rgb_color: !input color_low
+              brightness_pct: !input brightness
+      - conditions: "{{ zone == 'in_range' }}"
+        sequence:
+          - service: light.turn_on
+            target: !input light_target
+            data:
+              rgb_color: !input color_in_range
+              brightness_pct: !input brightness
+      - conditions: "{{ zone in ['high', 'very_high'] }}"
+        sequence:
+          - service: light.turn_on
+            target: !input light_target
+            data:
+              rgb_color: !input color_high
+              brightness_pct: !input brightness
+      - conditions: "{{ no_reading == 'off' }}"
+        sequence:
+          - service: light.turn_off
+            target: !input light_target

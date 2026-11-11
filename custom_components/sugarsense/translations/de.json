@@ -1,0 +1,109 @@
+{
+  "config": {
+    "step": {
+      "pair": {
+        "title": "Sugar Sense verbinden",
+        "description": "Scanne den QR-Code mit deinem Handy oder öffne **[{label}]({url})** und gib diesen Code ein:\n\n## {code}\n\nMelde dich mit deinem Sugar Sense Konto an und tippe auf **Connect**. Drücke danach hier auf **Absenden**.\n\nHome Assistant zeigt an und automatisiert. Es ersetzt nie deine Alarme. Alarme bleiben auf deinem Handy.",
+        "data": {
+          "qr_code": "Zum Verbinden scannen"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Sugar Sense neu verbinden",
+        "description": "Dieses Home Assistant wurde von deinem Sugar Sense Konto getrennt. Verbinde es mit einem neuen Code erneut."
+      }
+    },
+    "progress": {
+      "waiting": "Warte auf deine Verbindung.\n\nÖffne **{label}**, gib den Code **{code}** ein und tippe auf **Connect**. Dieses Fenster schließt sich von selbst."
+    },
+    "error": {
+      "code_expired": "Dieser Code ist abgelaufen, bevor er benutzt wurde. Hier ist ein neuer.",
+      "cannot_connect": "Sugar Sense ist nicht erreichbar. Prüfe die Internetverbindung und versuche es erneut.",
+      "disabled": "Das Verbinden von Home Assistant ist bei Sugar Sense gerade pausiert. Versuche es später erneut.",
+      "unknown": "Etwas Unerwartetes ist passiert. Versuche es erneut."
+    },
+    "abort": {
+      "already_configured": "Dieses Sugar Sense Konto ist bereits mit diesem Home Assistant verbunden.",
+      "cannot_connect": "Sugar Sense ist nicht erreichbar. Prüfe die Internetverbindung und versuche es erneut.",
+      "disabled": "Das Verbinden von Home Assistant ist bei Sugar Sense gerade pausiert. Versuche es später erneut.",
+      "reauth_successful": "Sugar Sense ist wieder verbunden.",
+      "wrong_account": "Du hast dich mit einem anderen Sugar Sense Konto angemeldet. Verbinde das Konto, das vorher verbunden war, oder entferne diese Integration und füge sie neu hinzu."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "glucose": {
+        "name": "Glukose"
+      },
+      "trend": {
+        "name": "Trend",
+        "state": {
+          "falling_fast": "Fällt schnell",
+          "falling": "Fällt",
+          "steady": "Stabil",
+          "rising": "Steigt",
+          "rising_fast": "Steigt schnell"
+        }
+      },
+      "change": {
+        "name": "Änderung"
+      },
+      "zone": {
+        "name": "Zone",
+        "state": {
+          "very_low": "Sehr niedrig",
+          "low": "Niedrig",
+          "in_range": "Im Zielbereich",
+          "high": "Hoch",
+          "very_high": "Sehr hoch"
+        }
+      },
+      "last_reading": {
+        "name": "Letzter Messwert"
+      },
+      "time_in_range_today": {
+        "name": "Zeit im Zielbereich heute"
+      },
+      "sensor_day": {
+        "name": "Sensortag"
+      },
+      "sensor_end": {
+        "name": "Sensorende"
+      },
+      "very_low_limit": {
+        "name": "Grenze sehr niedrig"
+      },
+      "low_limit": {
+        "name": "Grenze niedrig"
+      },
+      "high_limit": {
+        "name": "Grenze hoch"
+      },
+      "very_high_limit": {
+        "name": "Grenze sehr hoch"
+      }
+    },
+    "binary_sensor": {
+      "in_range": {
+        "name": "Im Zielbereich"
+      },
+      "alerts_paused": {
+        "name": "Alarme pausiert"
+      }
+    }
+  },
+  "issues": {
+    "premium_required": {
+      "title": "Sugar Sense Premium wird benötigt",
+      "description": "{account} ist verbunden, aber die Glukoseanzeige in Home Assistant gehört zu Sugar Sense Premium. Starte Premium in der Sugar Sense App und die Werte erscheinen hier innerhalb weniger Minuten von selbst."
+    },
+    "no_source": {
+      "title": "Noch keine Glukosequelle in Sugar Sense",
+      "description": "{account} ist verbunden, aber das Konto hat noch keine Glukosequelle. Öffne die Sugar Sense App und verbinde deinen Sensor. Die Werte erscheinen hier von selbst."
+    },
+    "follower_only": {
+      "title": "Dieses Sugar Sense Konto folgt einer anderen Person",
+      "description": "{account} ist verbunden, hat aber keine eigene Glukose: Es folgt einer anderen Person. Diese Version zeigt nur die eigenen Werte des verbundenen Kontos. Verbinde das Konto der Person, die den Sensor trägt."
+    }
+  }
+}

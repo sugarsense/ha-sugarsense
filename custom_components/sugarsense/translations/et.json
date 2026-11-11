@@ -1,0 +1,109 @@
+{
+  "config": {
+    "step": {
+      "pair": {
+        "title": "Ühenda Sugar Sense",
+        "description": "Skanni QR-kood telefoniga või ava **[{label}]({url})** ja sisesta see kood:\n\n## {code}\n\nLogi sisse oma Sugar Sense kontoga ja puuduta **Connect**. Seejärel vajuta siin **Esita**.\n\nHome Assistant näitab ja automatiseerib. See ei asenda kunagi sinu hoiatusi. Hoiatused jäävad telefoni.",
+        "data": {
+          "qr_code": "Skanni ühendamiseks"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Ühenda Sugar Sense uuesti",
+        "description": "See Home Assistant ühendati sinu Sugar Sense kontost lahti. Ühenda see uue koodiga uuesti."
+      }
+    },
+    "progress": {
+      "waiting": "Ootame sinu ühendust.\n\nAva **{label}**, sisesta kood **{code}** ja puuduta **Connect**. See aken sulgub ise."
+    },
+    "error": {
+      "code_expired": "See kood aegus enne kasutamist. Siin on uus.",
+      "cannot_connect": "Sugar Sense'iga ei saanud ühendust. Kontrolli internetiühendust ja proovi uuesti.",
+      "disabled": "Home Assistanti ühendamine on Sugar Sense'i poolel ajutiselt peatatud. Proovi hiljem uuesti.",
+      "unknown": "Juhtus midagi ootamatut. Proovi uuesti."
+    },
+    "abort": {
+      "already_configured": "See Sugar Sense konto on selle Home Assistantiga juba ühendatud.",
+      "cannot_connect": "Sugar Sense'iga ei saanud ühendust. Kontrolli internetiühendust ja proovi uuesti.",
+      "disabled": "Home Assistanti ühendamine on Sugar Sense'i poolel ajutiselt peatatud. Proovi hiljem uuesti.",
+      "reauth_successful": "Sugar Sense on taas ühendatud.",
+      "wrong_account": "Logisid sisse teise Sugar Sense kontoga. Ühenda konto, mis oli varem ühendatud, või eemalda see sidumine ja lisa uuesti."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "glucose": {
+        "name": "Glükoos"
+      },
+      "trend": {
+        "name": "Trend",
+        "state": {
+          "falling_fast": "Langeb kiiresti",
+          "falling": "Langeb",
+          "steady": "Stabiilne",
+          "rising": "Tõuseb",
+          "rising_fast": "Tõuseb kiiresti"
+        }
+      },
+      "change": {
+        "name": "Muutus"
+      },
+      "zone": {
+        "name": "Tsoon",
+        "state": {
+          "very_low": "Väga madal",
+          "low": "Madal",
+          "in_range": "Vahemikus",
+          "high": "Kõrge",
+          "very_high": "Väga kõrge"
+        }
+      },
+      "last_reading": {
+        "name": "Viimane näit"
+      },
+      "time_in_range_today": {
+        "name": "Aeg vahemikus täna"
+      },
+      "sensor_day": {
+        "name": "Sensori päev"
+      },
+      "sensor_end": {
+        "name": "Sensori lõpp"
+      },
+      "very_low_limit": {
+        "name": "Väga madala piir"
+      },
+      "low_limit": {
+        "name": "Madala piir"
+      },
+      "high_limit": {
+        "name": "Kõrge piir"
+      },
+      "very_high_limit": {
+        "name": "Väga kõrge piir"
+      }
+    },
+    "binary_sensor": {
+      "in_range": {
+        "name": "Vahemikus"
+      },
+      "alerts_paused": {
+        "name": "Hoiatused peatatud"
+      }
+    }
+  },
+  "issues": {
+    "premium_required": {
+      "title": "Vaja on Sugar Sense Premiumi",
+      "description": "{account} on ühendatud, kuid glükoosi näitamine Home Assistantis kuulub Sugar Sense Premiumi juurde. Alusta Premiumi Sugar Sense'i rakenduses ja näidud ilmuvad siia mõne minuti jooksul ise."
+    },
+    "no_source": {
+      "title": "Sugar Sense'is pole veel glükoosiallikat",
+      "description": "{account} on ühendatud, kuid kontol pole veel glükoosiallikat. Ava Sugar Sense'i rakendus ja ühenda oma sensor. Näidud ilmuvad siia ise."
+    },
+    "follower_only": {
+      "title": "See Sugar Sense konto jälgib kedagi teist",
+      "description": "{account} on ühendatud, kuid tal pole oma glükoosi: ta jälgib teist inimest. See versioon näitab ainult ühendatud konto enda näite. Ühenda selle inimese konto, kes sensorit kannab."
+    }
+  }
+}

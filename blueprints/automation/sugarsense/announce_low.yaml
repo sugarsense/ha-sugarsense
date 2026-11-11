@@ -1,0 +1,102 @@
+blueprint:
+  name: "Sugar Sense: say it on a speaker when glucose goes low"
+  description: >-
+    Speaks one sentence on a speaker when your glucose enters the low or the
+    very low zone, for example "Glucose is 68 and falling." It can stay quiet
+    during hours you choose.
+
+
+    This is a convenience, never an alert. It needs your home network, your
+    Home Assistant and your speaker to all be working. Alerts stay on your phone.
+  domain: automation
+  author: Sugar Sense
+  source_url: https://github.com/sugarsense/ha-sugarsense/blob/main/blueprints/automation/sugarsense/announce_low.yaml
+  input:
+    zone_sensor:
+      name: Zone sensor
+      selector:
+        entity:
+          filter:
+            - integration: sugarsense
+              domain: sensor
+    glucose_sensor:
+      name: Glucose sensor
+      selector:
+        entity:
+          filter:
+            - integration: sugarsense
+              domain: sensor
+              device_class: blood_glucose_concentration
+    trend_sensor:
+      name: Trend sensor
+      selector:
+        entity:
+          filter:
+            - integration: sugarsense
+              domain: sensor
+    tts_entity:
+      name: Text to speech
+      description: The voice that reads the sentence.
+      selector:
+        entity:
+          filter:
+            - domain: tts
+    speaker:
+      name: Speaker
+      selector:
+        entity:
+          filter:
+            - domain: media_player
+    quiet_from:
+      name: Stay quiet from
+      description: Set both times to the same value to speak at any hour.
+      default: "00:00:00"
+      selector:
+        time:
+    quiet_until:
+      name: Stay quiet until
+      default: "00:00:00"
+      selector:
+        time:
+
+mode: single
+max_exceeded: silent
+
+trigger:
+  - platform: state
+    entity_id: !input zone_sensor
+    to:
+      - low
+      - very_low
+
+variables:
+  glucose_sensor: !input glucose_sensor
+  trend_sensor: !input trend_sensor
+  quiet_from: !input quiet_from
+  quiet_until: !input quiet_until
+  trend_words:
+    falling_fast: falling fast
+    falling: falling
+    steady: steady
+    rising: rising
+    rising_fast: rising fast
+
+condition:
+  - condition: template
+    value_template: "{{ trigger.from_state is not none and trigger.from_state.state in ['in_range', 'high', 'very_high'] }}"
+  - condition: template
+    value_template: >-
+      {% set now_t = now().strftime('%H:%M:%S') %}
+      {% if quiet_from == quiet_until %}true
+      {% elif quiet_from < quiet_until %}{{ not (quiet_from <= now_t < quiet_until) }}
+      {% else %}{{ not (now_t >= quiet_from or now_t < quiet_until) }}
+      {% endif %}
+
+action:
+  - service: tts.speak
+    target:
+      entity_id: !input tts_entity
+    data:
+      media_player_entity_id: !input speaker
+      message: >-
+        Glucose is {{ states(glucose_sensor) }} and {{ trend_words.get(states(trend_sensor), 'steady') }}.

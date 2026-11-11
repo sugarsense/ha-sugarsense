@@ -1,0 +1,108 @@
+blueprint:
+  name: "Sugar Sense: night light when out of range"
+  description: >-
+    Between the hours you choose, switches a light on at a low brightness
+    while your glucose is out of your range, and off again when it is back in
+    range. Made for a hallway or a parent's bedside lamp.
+
+
+    This is a display, never an alert. Alerts stay on your phone.
+  domain: automation
+  author: Sugar Sense
+  source_url: https://github.com/sugarsense/ha-sugarsense/blob/main/blueprints/automation/sugarsense/night_light.yaml
+  input:
+    in_range_sensor:
+      name: In range sensor
+      description: The In range sensor of your Sugar Sense device.
+      selector:
+        entity:
+          filter:
+            - integration: sugarsense
+              domain: binary_sensor
+    light_target:
+      name: Light
+      selector:
+        target:
+          entity:
+            - domain: light
+    night_from:
+      name: From
+      default: "22:00:00"
+      selector:
+        time:
+    night_until:
+      name: Until
+      default: "07:00:00"
+      selector:
+        time:
+    brightness:
+      name: Brightness
+      default: 15
+      selector:
+        number:
+          min: 1
+          max: 100
+          unit_of_measurement: "%"
+
+mode: restart
+
+trigger:
+  - platform: state
+    entity_id: !input in_range_sensor
+    to: "off"
+    id: out
+  - platform: state
+    entity_id: !input in_range_sensor
+    to: "on"
+    id: back
+  - platform: time
+    at: !input night_from
+    id: evening
+  - platform: time
+    at: !input night_until
+    id: morning
+  - platform: homeassistant
+    event: start
+    id: evening
+
+action:
+  - choose:
+      # Out of range inside the night: when it happens, when the night begins
+      # with glucose already out of range, and after a restart.
+      - conditions:
+          - condition: trigger
+            id:
+              - out
+              - evening
+          - condition: state
+            entity_id: !input in_range_sensor
+            state: "off"
+          - condition: time
+            after: !input night_from
+            before: !input night_until
+        sequence:
+          - service: light.turn_on
+            target: !input light_target
+            data:
+              brightness_pct: !input brightness
+      # Back in range during the night: the light this automation lit goes off.
+      # Outside the night the light is never touched.
+      - conditions:
+          - condition: trigger
+            id: back
+          - condition: time
+            after: !input night_from
+            before: !input night_until
+        sequence:
+          - service: light.turn_off
+            target: !input light_target
+      # The night ends while still out of range: the light it lit goes off.
+      - conditions:
+          - condition: trigger
+            id: morning
+          - condition: state
+            entity_id: !input in_range_sensor
+            state: "off"
+        sequence:
+          - service: light.turn_off
+            target: !input light_target

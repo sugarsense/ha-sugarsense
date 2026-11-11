@@ -1,0 +1,109 @@
+{
+  "config": {
+    "step": {
+      "pair": {
+        "title": "Conectar Sugar Sense",
+        "description": "Escanea el código QR con tu teléfono, o abre **[{label}]({url})** e introduce este código:\n\n## {code}\n\nInicia sesión con tu cuenta de Sugar Sense y toca **Connect**. Después pulsa **Enviar** aquí.\n\nHome Assistant muestra y automatiza. Nunca sustituye tus alertas. Las alertas siguen en tu teléfono.",
+        "data": {
+          "qr_code": "Escanea para conectar"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Volver a conectar Sugar Sense",
+        "description": "Este Home Assistant se desconectó de tu cuenta de Sugar Sense. Conéctalo de nuevo con un código nuevo."
+      }
+    },
+    "progress": {
+      "waiting": "Esperando a que te conectes.\n\nAbre **{label}**, introduce el código **{code}** y toca **Connect**. Esta ventana se cierra sola."
+    },
+    "error": {
+      "code_expired": "Ese código caducó antes de usarse. Aquí tienes uno nuevo.",
+      "cannot_connect": "No se pudo contactar con Sugar Sense. Revisa la conexión a Internet e inténtalo de nuevo.",
+      "disabled": "La conexión de Home Assistant está en pausa por parte de Sugar Sense. Inténtalo más tarde.",
+      "unknown": "Ocurrió algo inesperado. Inténtalo de nuevo."
+    },
+    "abort": {
+      "already_configured": "Esta cuenta de Sugar Sense ya está conectada a este Home Assistant.",
+      "cannot_connect": "No se pudo contactar con Sugar Sense. Revisa la conexión a Internet e inténtalo de nuevo.",
+      "disabled": "La conexión de Home Assistant está en pausa por parte de Sugar Sense. Inténtalo más tarde.",
+      "reauth_successful": "Sugar Sense vuelve a estar conectado.",
+      "wrong_account": "Iniciaste sesión con otra cuenta de Sugar Sense. Conecta la cuenta que estaba conectada antes, o elimina esta integración y añádela de nuevo."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "glucose": {
+        "name": "Glucosa"
+      },
+      "trend": {
+        "name": "Tendencia",
+        "state": {
+          "falling_fast": "Bajando rápido",
+          "falling": "Bajando",
+          "steady": "Estable",
+          "rising": "Subiendo",
+          "rising_fast": "Subiendo rápido"
+        }
+      },
+      "change": {
+        "name": "Cambio"
+      },
+      "zone": {
+        "name": "Zona",
+        "state": {
+          "very_low": "Muy baja",
+          "low": "Baja",
+          "in_range": "En rango",
+          "high": "Alta",
+          "very_high": "Muy alta"
+        }
+      },
+      "last_reading": {
+        "name": "Última lectura"
+      },
+      "time_in_range_today": {
+        "name": "Tiempo en rango hoy"
+      },
+      "sensor_day": {
+        "name": "Día del sensor"
+      },
+      "sensor_end": {
+        "name": "Fin del sensor"
+      },
+      "very_low_limit": {
+        "name": "Límite muy bajo"
+      },
+      "low_limit": {
+        "name": "Límite bajo"
+      },
+      "high_limit": {
+        "name": "Límite alto"
+      },
+      "very_high_limit": {
+        "name": "Límite muy alto"
+      }
+    },
+    "binary_sensor": {
+      "in_range": {
+        "name": "En rango"
+      },
+      "alerts_paused": {
+        "name": "Alertas en pausa"
+      }
+    }
+  },
+  "issues": {
+    "premium_required": {
+      "title": "Se necesita Sugar Sense Premium",
+      "description": "{account} está conectada, pero mostrar la glucosa en Home Assistant forma parte de Sugar Sense Premium. Activa Premium en la app Sugar Sense y las lecturas aparecen aquí solas en unos minutos."
+    },
+    "no_source": {
+      "title": "Aún no hay fuente de glucosa en Sugar Sense",
+      "description": "{account} está conectada, pero la cuenta aún no tiene una fuente de glucosa. Abre la app Sugar Sense y conecta tu sensor. Las lecturas aparecen aquí solas."
+    },
+    "follower_only": {
+      "title": "Esta cuenta de Sugar Sense sigue a otra persona",
+      "description": "{account} está conectada, pero no tiene glucosa propia: sigue a otra persona. Esta versión solo muestra las lecturas propias de la cuenta conectada. Conecta la cuenta de la persona que lleva el sensor."
+    }
+  }
+}

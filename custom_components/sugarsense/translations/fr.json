@@ -1,0 +1,109 @@
+{
+  "config": {
+    "step": {
+      "pair": {
+        "title": "Connecter Sugar Sense",
+        "description": "Scannez le code QR avec votre téléphone, ou ouvrez **[{label}]({url})** et saisissez ce code :\n\n## {code}\n\nConnectez-vous avec votre compte Sugar Sense et touchez **Connect**. Appuyez ensuite ici sur **Valider**.\n\nHome Assistant affiche et automatise. Il ne remplace jamais vos alertes. Les alertes restent sur votre téléphone.",
+        "data": {
+          "qr_code": "Scannez pour connecter"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reconnecter Sugar Sense",
+        "description": "Ce Home Assistant a été déconnecté de votre compte Sugar Sense. Reconnectez-le avec un nouveau code."
+      }
+    },
+    "progress": {
+      "waiting": "En attente de votre connexion.\n\nOuvrez **{label}**, saisissez le code **{code}** et touchez **Connect**. Cette fenêtre se ferme toute seule."
+    },
+    "error": {
+      "code_expired": "Ce code a expiré avant d'être utilisé. En voici un nouveau.",
+      "cannot_connect": "Impossible de joindre Sugar Sense. Vérifiez la connexion Internet et réessayez.",
+      "disabled": "La connexion de Home Assistant est en pause côté Sugar Sense. Réessayez plus tard.",
+      "unknown": "Une erreur inattendue s'est produite. Réessayez."
+    },
+    "abort": {
+      "already_configured": "Ce compte Sugar Sense est déjà connecté à ce Home Assistant.",
+      "cannot_connect": "Impossible de joindre Sugar Sense. Vérifiez la connexion Internet et réessayez.",
+      "disabled": "La connexion de Home Assistant est en pause côté Sugar Sense. Réessayez plus tard.",
+      "reauth_successful": "Sugar Sense est de nouveau connecté.",
+      "wrong_account": "Vous vous êtes connecté avec un autre compte Sugar Sense. Reconnectez le compte utilisé auparavant, ou supprimez cette intégration et ajoutez-la de nouveau."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "glucose": {
+        "name": "Glucose"
+      },
+      "trend": {
+        "name": "Tendance",
+        "state": {
+          "falling_fast": "Baisse rapide",
+          "falling": "En baisse",
+          "steady": "Stable",
+          "rising": "En hausse",
+          "rising_fast": "Hausse rapide"
+        }
+      },
+      "change": {
+        "name": "Variation"
+      },
+      "zone": {
+        "name": "Zone",
+        "state": {
+          "very_low": "Très bas",
+          "low": "Bas",
+          "in_range": "Dans la cible",
+          "high": "Élevé",
+          "very_high": "Très élevé"
+        }
+      },
+      "last_reading": {
+        "name": "Dernière mesure"
+      },
+      "time_in_range_today": {
+        "name": "Temps dans la cible aujourd'hui"
+      },
+      "sensor_day": {
+        "name": "Jour du capteur"
+      },
+      "sensor_end": {
+        "name": "Fin du capteur"
+      },
+      "very_low_limit": {
+        "name": "Seuil très bas"
+      },
+      "low_limit": {
+        "name": "Seuil bas"
+      },
+      "high_limit": {
+        "name": "Seuil élevé"
+      },
+      "very_high_limit": {
+        "name": "Seuil très élevé"
+      }
+    },
+    "binary_sensor": {
+      "in_range": {
+        "name": "Dans la cible"
+      },
+      "alerts_paused": {
+        "name": "Alertes en pause"
+      }
+    }
+  },
+  "issues": {
+    "premium_required": {
+      "title": "Sugar Sense Premium est nécessaire",
+      "description": "{account} est connecté, mais l'affichage du glucose dans Home Assistant fait partie de Sugar Sense Premium. Activez Premium dans l'app Sugar Sense et les mesures apparaissent ici toutes seules en quelques minutes."
+    },
+    "no_source": {
+      "title": "Pas encore de source de glucose dans Sugar Sense",
+      "description": "{account} est connecté, mais le compte n'a pas encore de source de glucose. Ouvrez l'app Sugar Sense et connectez votre capteur. Les mesures apparaissent ici toutes seules."
+    },
+    "follower_only": {
+      "title": "Ce compte Sugar Sense suit une autre personne",
+      "description": "{account} est connecté, mais n'a pas de glucose à lui : il suit une autre personne. Cette version affiche uniquement les mesures du compte connecté. Connectez le compte de la personne qui porte le capteur."
+    }
+  }
+}

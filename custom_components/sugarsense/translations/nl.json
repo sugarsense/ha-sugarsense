@@ -1,0 +1,109 @@
+{
+  "config": {
+    "step": {
+      "pair": {
+        "title": "Sugar Sense verbinden",
+        "description": "Scan de QR-code met je telefoon, of open **[{label}]({url})** en voer deze code in:\n\n## {code}\n\nLog in met je Sugar Sense account en tik op **Connect**. Druk daarna hier op **Verzenden**.\n\nHome Assistant toont en automatiseert. Het vervangt nooit je meldingen. Meldingen blijven op je telefoon.",
+        "data": {
+          "qr_code": "Scan om te verbinden"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Sugar Sense opnieuw verbinden",
+        "description": "Deze Home Assistant is losgekoppeld van je Sugar Sense account. Verbind opnieuw met een nieuwe code."
+      }
+    },
+    "progress": {
+      "waiting": "Wachten tot je verbindt.\n\nOpen **{label}**, voer de code **{code}** in en tik op **Connect**. Dit venster sluit vanzelf."
+    },
+    "error": {
+      "code_expired": "Die code is verlopen voordat hij werd gebruikt. Hier is een nieuwe.",
+      "cannot_connect": "Sugar Sense is niet bereikbaar. Controleer de internetverbinding en probeer het opnieuw.",
+      "disabled": "Home Assistant verbinden is bij Sugar Sense tijdelijk gepauzeerd. Probeer het later opnieuw.",
+      "unknown": "Er ging iets onverwachts mis. Probeer het opnieuw."
+    },
+    "abort": {
+      "already_configured": "Dit Sugar Sense account is al verbonden met deze Home Assistant.",
+      "cannot_connect": "Sugar Sense is niet bereikbaar. Controleer de internetverbinding en probeer het opnieuw.",
+      "disabled": "Home Assistant verbinden is bij Sugar Sense tijdelijk gepauzeerd. Probeer het later opnieuw.",
+      "reauth_successful": "Sugar Sense is weer verbonden.",
+      "wrong_account": "Je bent ingelogd met een ander Sugar Sense account. Verbind het account dat eerder verbonden was, of verwijder deze integratie en voeg haar opnieuw toe."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "glucose": {
+        "name": "Glucose"
+      },
+      "trend": {
+        "name": "Trend",
+        "state": {
+          "falling_fast": "Daalt snel",
+          "falling": "Daalt",
+          "steady": "Stabiel",
+          "rising": "Stijgt",
+          "rising_fast": "Stijgt snel"
+        }
+      },
+      "change": {
+        "name": "Verandering"
+      },
+      "zone": {
+        "name": "Zone",
+        "state": {
+          "very_low": "Zeer laag",
+          "low": "Laag",
+          "in_range": "Binnen bereik",
+          "high": "Hoog",
+          "very_high": "Zeer hoog"
+        }
+      },
+      "last_reading": {
+        "name": "Laatste meting"
+      },
+      "time_in_range_today": {
+        "name": "Tijd binnen bereik vandaag"
+      },
+      "sensor_day": {
+        "name": "Sensordag"
+      },
+      "sensor_end": {
+        "name": "Einde sensor"
+      },
+      "very_low_limit": {
+        "name": "Grens zeer laag"
+      },
+      "low_limit": {
+        "name": "Grens laag"
+      },
+      "high_limit": {
+        "name": "Grens hoog"
+      },
+      "very_high_limit": {
+        "name": "Grens zeer hoog"
+      }
+    },
+    "binary_sensor": {
+      "in_range": {
+        "name": "Binnen bereik"
+      },
+      "alerts_paused": {
+        "name": "Meldingen gepauzeerd"
+      }
+    }
+  },
+  "issues": {
+    "premium_required": {
+      "title": "Sugar Sense Premium is nodig",
+      "description": "{account} is verbonden, maar glucose tonen in Home Assistant hoort bij Sugar Sense Premium. Start Premium in de Sugar Sense app en de metingen verschijnen hier vanzelf binnen enkele minuten."
+    },
+    "no_source": {
+      "title": "Nog geen glucosebron in Sugar Sense",
+      "description": "{account} is verbonden, maar het account heeft nog geen glucosebron. Open de Sugar Sense app en verbind je sensor. De metingen verschijnen hier vanzelf."
+    },
+    "follower_only": {
+      "title": "Dit Sugar Sense account volgt iemand anders",
+      "description": "{account} is verbonden, maar heeft geen eigen glucose: het volgt iemand anders. Deze versie toont alleen de eigen metingen van het verbonden account. Verbind het account van de persoon die de sensor draagt."
+    }
+  }
+}

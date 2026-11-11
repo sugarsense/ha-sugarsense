@@ -1,0 +1,85 @@
+{
+  "config": {
+    "step": {
+      "pair": {
+        "title": "Connect Sugar Sense",
+        "description": "Scan the QR code with your phone, or open **[{label}]({url})** and enter this code:\n\n## {code}\n\nSign in with your Sugar Sense account and tap **Connect**. Then press **Submit** here.\n\nHome Assistant shows and automates. It never replaces your alerts. Alerts stay on your phone.",
+        "data": {
+          "qr_code": "Scan to connect"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reconnect Sugar Sense",
+        "description": "This Home Assistant was disconnected from your Sugar Sense account. Connect it again with a new code."
+      }
+    },
+    "progress": {
+      "waiting": "Waiting for you to connect.\n\nOpen **{label}**, enter the code **{code}** and tap **Connect**. This closes by itself."
+    },
+    "error": {
+      "code_expired": "That code expired before it was used. Here is a new one.",
+      "cannot_connect": "Could not reach Sugar Sense. Check the internet connection and try again.",
+      "disabled": "Connecting Home Assistant is paused on the Sugar Sense side. Try again later.",
+      "unknown": "Something unexpected happened. Try again."
+    },
+    "abort": {
+      "already_configured": "This Sugar Sense account is already connected to this Home Assistant.",
+      "cannot_connect": "Could not reach Sugar Sense. Check the internet connection and try again.",
+      "disabled": "Connecting Home Assistant is paused on the Sugar Sense side. Try again later.",
+      "reauth_successful": "Sugar Sense is connected again.",
+      "wrong_account": "You signed in with a different Sugar Sense account. Reconnect with the account that was connected before, or remove this integration and add it again."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "glucose": { "name": "Glucose" },
+      "trend": {
+        "name": "Trend",
+        "state": {
+          "falling_fast": "Falling fast",
+          "falling": "Falling",
+          "steady": "Steady",
+          "rising": "Rising",
+          "rising_fast": "Rising fast"
+        }
+      },
+      "change": { "name": "Change" },
+      "zone": {
+        "name": "Zone",
+        "state": {
+          "very_low": "Very low",
+          "low": "Low",
+          "in_range": "In range",
+          "high": "High",
+          "very_high": "Very high"
+        }
+      },
+      "last_reading": { "name": "Last reading" },
+      "time_in_range_today": { "name": "Time in range today" },
+      "sensor_day": { "name": "Sensor day" },
+      "sensor_end": { "name": "Sensor ends" },
+      "very_low_limit": { "name": "Very low limit" },
+      "low_limit": { "name": "Low limit" },
+      "high_limit": { "name": "High limit" },
+      "very_high_limit": { "name": "Very high limit" }
+    },
+    "binary_sensor": {
+      "in_range": { "name": "In range" },
+      "alerts_paused": { "name": "Alerts paused" }
+    }
+  },
+  "issues": {
+    "premium_required": {
+      "title": "Sugar Sense Premium is needed",
+      "description": "{account} is connected, but showing glucose in Home Assistant is part of Sugar Sense Premium. Start Premium in the Sugar Sense app and the readings appear here by themselves within a few minutes."
+    },
+    "no_source": {
+      "title": "No glucose source in Sugar Sense yet",
+      "description": "{account} is connected, but the account has no glucose source yet. Open the Sugar Sense app and connect your sensor. The readings appear here by themselves."
+    },
+    "follower_only": {
+      "title": "This Sugar Sense account follows someone else",
+      "description": "{account} is connected, but it has no glucose of its own: it follows another person. This version shows the connected account's own readings only. Connect the account of the person who wears the sensor."
+    }
+  }
+}

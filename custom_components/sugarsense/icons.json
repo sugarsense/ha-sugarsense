@@ -1,0 +1,22 @@
+{
+  "entity": {
+    "sensor": {
+      "glucose": { "default": "mdi:water" },
+      "trend": { "default": "mdi:arrow-right" },
+      "change": { "default": "mdi:plus-minus-variant" },
+      "zone": { "default": "mdi:target" },
+      "last_reading": { "default": "mdi:clock-outline" },
+      "time_in_range_today": { "default": "mdi:chart-donut" },
+      "sensor_day": { "default": "mdi:calendar-today" },
+      "sensor_end": { "default": "mdi:calendar-end" },
+      "very_low_limit": { "default": "mdi:arrow-collapse-down" },
+      "low_limit": { "default": "mdi:arrow-down-thin" },
+      "high_limit": { "default": "mdi:arrow-up-thin" },
+      "very_high_limit": { "default": "mdi:arrow-collapse-up" }
+    },
+    "binary_sensor": {
+      "in_range": { "default": "mdi:target", "state": { "off": "mdi:target-variant" } },
+      "alerts_paused": { "default": "mdi:bell", "state": { "on": "mdi:bell-off" } }
+    }
+  }
+}
