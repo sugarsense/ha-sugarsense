@@ -15,7 +15,7 @@ streaming app. No Libre, Dexcom or Sugar Sense password is ever typed into Home 
 ## What you need
 
 - The Sugar Sense app on your phone, connected to your sensor ([iPhone and Android](https://sugarsense.io/download)).
-- Sugar Sense Premium. Connecting is open to everyone; the readings are shown for Premium accounts.
+  The integration is free: no subscription is needed for it.
 - Home Assistant 2025.3 or newer.
 
 ## Install
@@ -113,7 +113,6 @@ cards:
 
 Home Assistant shows one clear notice under **Settings > Repairs** when there is nothing to show:
 
-- **Sugar Sense Premium is needed.** Start Premium in the app; the readings appear by themselves.
 - **No glucose source in Sugar Sense yet.** Connect your sensor in the app.
 - **This Sugar Sense account follows someone else.** This version shows the connected account's own
   readings. Connect the account of the person who wears the sensor.
