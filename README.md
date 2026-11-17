@@ -22,11 +22,17 @@ streaming app. No Libre, Dexcom or Sugar Sense password is ever typed into Home 
 
 ### With HACS
 
-1. Open HACS, then the three dots in the top right corner, then **Custom repositories**.
-2. Add `https://github.com/sugarsense/ha-sugarsense` with the type **Integration**.
-3. Find **Sugar Sense** in HACS, download it, and restart Home Assistant.
+Sugar Sense is in the HACS default list, so there is nothing to add first.
+
+1. Open HACS and search for **Sugar Sense**.
+2. Download it and restart Home Assistant.
 
 [![Open this repository in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=sugarsense&repository=ha-sugarsense&category=integration)
+
+If the search does not find it (an older HACS, or a list that has not refreshed yet), add it as a
+custom repository: the three dots in the top right corner of HACS, **Custom repositories**, the
+address `https://github.com/sugarsense/ha-sugarsense`, the type **Integration**. Then find **Sugar
+Sense** in HACS, download it, and restart Home Assistant.
 
 ### By hand
 
