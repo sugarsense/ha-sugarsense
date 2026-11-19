@@ -115,6 +115,15 @@ cards:
       - entity: sensor.sugar_sense_your_name_high_limit
 ```
 
+Or use [SugarTV Card](https://github.com/wiltodelta/homeassistant-sugartv-card) (HACS), which picks up `Trend` and `Last reading` automatically:
+
+```yaml
+type: custom:sugartv-card
+glucose_value: sensor.sugar_sense_your_name_glucose
+```
+
+![SugarTV Card in a wide and a tall dashboard slot](https://raw.githubusercontent.com/wiltodelta/homeassistant-sugartv-card/v0.22.0/sugartv-card-layouts.png)
+
 ## Notices you may see
 
 Home Assistant shows one clear notice under **Settings > Repairs** when there is nothing to show:
